@@ -1,12 +1,7 @@
 // Current Day
 $(document).ready(function () {
-    console.log(moment());
-
-    console.log(moment().format());
-
-    $("#current-day").text(moment().format("dddd, MMMM"));
-
-}
+    $("#currentDay").text(moment().format("dddd, MMMM Do")); 
+})
 
 
 // Time blocks for business hours
