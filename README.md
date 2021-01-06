@@ -1,7 +1,7 @@
 # work-day-scheduler
 
 ## Site Picture
-![Site]
+![Site](./Assets/work-day.png)
 
 
 ## Technologies Used
