@@ -3,26 +3,31 @@ $(document).ready(function () {
     $("#currentDay").text(moment().format("dddd, MMMM Do")); 
 })
 
-// Time block is color coded for past, present, and future
-
+// Color Change
 function time () {
     var currentTime = moment().format('H');
-    console.log(currentTime)
-    var timeBlocks = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"]
-    var timeDiv = $("#timeOfDay");
-
     
-    // make for loop iterating through timeBlocks
-    for (var i = 0; i < timeBlocks.length; i++) {
-        var newTimeBlock = $("<div class='row time-block'><div class='col-md-1 hour'>" + timeBlocks[i] + "</div><textarea class='col-md-10 description'></textarea> <button class='col-md-1 saveBtn'><i class='fas fa-save'></i></button></div>" )
-        timeDiv.append(newTimeBlock);
-    }
-    // new div for each timeblock
-    // append to timeOfDay
+    $(".time-block").each(function(){
+        var scheduleTime = parseInt($(this).attr("id"));
+
+        if (scheduleTime === currentTime) {
+            $(this).addClass("present");
+            $(this).removeClass("past");
+            $(this).removeClass("future");
+        } else if (scheduleTime < currentTime) {
+            $(this).removeClass("present");
+            $(this).addClass("past")
+            $(this).removeClass("future");
+        } else {
+            $(this).removeClass("past");
+            $(this).addClass("future")
+            $(this).removeClass("present");
+        }
+    });
+
 }
 
 time();
-
 
 
 
